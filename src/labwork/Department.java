@@ -1,12 +1,11 @@
 package labwork;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
 
 public class Department {
 
     public String name;
-    public Set<Instructor> instructorSet = new HashSet();
+    public ArrayList<Instructor> instructorList = new ArrayList<>();
 
     public Department(String name) {
         this.name = name;
@@ -15,7 +14,7 @@ public class Department {
     public Instructor addInstructor(String name, Department department) {
         System.out.println();
         Instructor instructor = new Instructor(name);
-        instructorSet.add(instructor);
+        instructorList.add(instructor);
         System.out.println("На " + department.name + " появился новый преподаватель: " + instructor.name);
 
         return instructor;
@@ -24,7 +23,7 @@ public class Department {
     public void removeInstructor(Instructor instructor, Department department) {
         System.out.println();
         System.out.println("С " + department.name + " был уволен преподаватель " + instructor.name);
-        instructorSet.remove(instructor);
+        instructorList.remove(instructor);
     }
 
     public void getInstructor(Instructor instructor) {
@@ -36,7 +35,7 @@ public class Department {
         System.out.println();
         int i = 0;
         System.out.println("Список преподавателей:");
-        for (Instructor instructor : instructorSet) {
+        for (Instructor instructor : instructorList) {
             i++;
             System.out.println(i + ". " + instructor.name);
         }

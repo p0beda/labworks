@@ -1,15 +1,14 @@
 package labwork;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
 
 public class University {
 
     public String name;
     public String address;
     public int number;
-    public Set<Department> departmentSet = new HashSet();
-    public Set<Student> studentSet = new HashSet();
+    public ArrayList<Department> departmentList = new ArrayList<>();
+    public ArrayList<Student> studentList = new ArrayList<>();
 
     public University(String name, String address, int number) {
         this.name = name;
@@ -19,13 +18,13 @@ public class University {
 
     public Student addStudent(String name, int studentId) {
         Student student = new Student(name, studentId);
-        studentSet.add(student);
+        studentList.add(student);
 
         return student;
     }
 
     public void removeStudent(Student student) {
-        studentSet.remove(student);
+        studentList.remove(student);
     }
 
     public void getStudent(Student student) {
@@ -35,7 +34,7 @@ public class University {
 
     public Department addDepartament(String name, University university) {
         Department department = new Department(name);
-        departmentSet.add(department);
+        departmentList.add(department);
         System.out.println("В университете " + university.name + " была сформирована " + department.name);
 
         return department;
@@ -44,7 +43,7 @@ public class University {
     public void removeDepartment(Department department, University university) {
         System.out.println();
         System.out.println("В университете " + university.name + " была расформирована " + department.name);
-        departmentSet.remove(department);
+        departmentList.remove(department);
     }
 
     public void getDepartment(Department department) {
@@ -56,7 +55,7 @@ public class University {
         System.out.println();
         int i = 0;
         System.out.println("Список кафедр в университете " + university.name + ": ");
-        for (Department department : departmentSet) {
+        for (Department department : departmentList) {
             i++;
             System.out.println(i + ". " + department.name);
         }
